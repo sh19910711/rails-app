@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   layout 'application'
 
+  after_filter :web_console
+
   def index
     @items = Item.all
   end
@@ -27,5 +29,9 @@ class ItemsController < ApplicationController
   
     def item_params
       params.require(:item).permit(:name)
+    end
+
+    def web_console
+      console
     end
 end
